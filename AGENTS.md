@@ -16,7 +16,17 @@ Read first: `docs/vision.md`, `docs/styleguide.md`. Decisions: `docs/adr/`.
    `docs/plans/done/`.
 2. The plan is split into GitHub issues: skill `plan-to-issues` (`.agents/skills/`). A human
    reviews the split before anything is published. GitHub issues out of reach: files in
-   `docs/issues/` (ADR 0004).
+   `docs/issues/` (ADR 0004). Every issue carries, in this order:
+
+   ```
+   Source: plan.md § <n>
+   **Scope:** <what changes, where>
+   **Done when:** <the plan's check, word for word>
+   **Blocked by:** <#n, or —; "done needs #n" when it can start earlier>
+   **Model:** <model> (<kind of work>)
+   ```
+
+   and the label `plan:<plan name>`.
 3. Issues are worked by workers, one issue per worker, each on its own branch or worktree.
    Pick the model per issue: the strongest for logic, a cheaper one for views and tests.
 4. A worker closes its issue with a closing comment, exactly this shape:
@@ -28,13 +38,17 @@ Read first: `docs/vision.md`, `docs/styleguide.md`. Decisions: `docs/adr/`.
    ```
 
 5. An issue is closed only when its "Done when" holds. If it can't hold yet, leave it open and
-   say what it waits on.
+   say what it waits on. A step that waits on someone outside (a reviewer) stays open until they
+   have answered, even once your part is sent.
 
 ## Skills
 
 Shared skills live in `.agents/skills/`, one folder each, `SKILL.md` inside. That folder is the
 one source for every harness on the team. If yours loads skills from somewhere else, point it
 here (a link or a config entry). Don't copy: copies drift.
+
+- `plan-to-issues`: split `plan.md` into issues.
+- `preview`: put a page on the public preview link and take the marker off again.
 
 ## Rules
 
